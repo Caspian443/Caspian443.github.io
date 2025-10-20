@@ -1,6 +1,6 @@
-hello world
-
-[test file](./_posts/2024-11-29-test.md)
-[blog1](./_posts/2024-12-25-test.md)
-
-[to do](todo.md)
+<p align="center">
+  <p align="center">
+      <img src="https://github-readme-stats.vercel.app/api?username=Caspian443&count_private=true" />
+      <img src="https://repobeats.axiom.co/api/embed/204d4f971425aa6d3eac4ea0bff2787d28d999a2.svg" />
+  </p>
+</p>
