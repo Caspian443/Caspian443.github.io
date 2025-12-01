@@ -7,7 +7,7 @@
   </p>
 </p>
 
-## paper
+<!-- ## paper
 - [paper](./paper/paper.md)
 - [idea](./paper/idea.md)
 
@@ -15,7 +15,10 @@
 - [tools](./tools/tool.md)
 
 ## knowledge
-- [knowledge](./knowledge/README.md)
+- [knowledge](./knowledge/README.md) -->
+
+## Reflections 
+- [Reflections](./Reflections.md)
 
 
 <script src="https://giscus.app/client.js"
