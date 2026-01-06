@@ -1,4 +1,4 @@
-![Metrics](github-metrics.svg)
+![Metrics](../github-metrics.svg)
 
 <!-- ## paper
 - [paper](./paper/paper.md)

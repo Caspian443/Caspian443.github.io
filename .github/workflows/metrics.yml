@@ -1,0 +1,36 @@
+name: Metrics
+on:
+  # 每天世界标准时间 0 点运行一次
+  schedule: [{cron: "0 0 * * *"}]
+  # 允许你手动点击按钮运行 (用于测试)
+  workflow_dispatch:
+  # 当推送到主分支时运行 (可选)
+  push: {branches: ["master", "main"]}
+jobs:
+  github-metrics:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: lowlighter/metrics@latest
+        with:
+          # 使用你刚才设置的 Token
+          token: ${{ secrets.METRICS_TOKEN }}
+
+          # --- 配置选项 (你可以随意修改下面的部分) ---
+          # 你的 GitHub 用户名
+          user: Caspian443
+          # 生成的图片放在哪里
+          filename: github-metrics.svg
+          # 基础统计 (header, activity, community, repositories, metadata)
+          base: header, activity, community, repositories, metadata
+          # 插件：编程语言分析
+          plugin_languages: yes
+          plugin_languages_ignored: >-
+            html, css, tex, less, dockerfile, makefile, qmake, lex, cmake, shell,
+            gnuplot
+          plugin_languages_limit: 8
+          plugin_languages_sections: most-used
+          # 插件：详细介绍
+          plugin_introduction: yes
+          plugin_introduction_title: yes
