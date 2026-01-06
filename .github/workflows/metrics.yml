@@ -21,7 +21,7 @@ jobs:
           # 你的 GitHub 用户名
           user: Caspian443
           # 生成的图片放在哪里
-          filename: github-metrics.svg
+          filename: docs/github-metrics.svg
           # 基础统计 (header, activity, community, repositories, metadata)
           base: header, activity, community, repositories, metadata
           # 插件：编程语言分析
