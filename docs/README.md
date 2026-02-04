@@ -1,17 +1,16 @@
 ![Metrics](../github-metrics.svg)
 
-<!-- ## paper
-- [paper](./paper/paper.md)
-- [idea](./paper/idea.md)
+# 📚 博客文章 (Blog Posts)
 
-## tools
-- [tools](./tools/tool.md)
+## 🧠 AI & 大模型
+> 探索人工智能、深度学习与大模型的前沿技术与复现。
 
-## knowledge
-- [knowledge](./knowledge/README.md) -->
+- [大模型的复读机现象的解决](./ai/大模型的复读机现象的解决.md)
 
-## Reflections 
-- [Reflections](./Reflections.md)
+## 🖥️ 操作系统 (OS)
+> 操作系统内核设计、底层原理与系统编程笔记。
+
+- *（暂无文章，等待更新...）*
 
 
 <script src="https://giscus.app/client.js"
