@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: " en-US" }}">
+
+<head>
+  <meta charset="UTF-8">
+
+  {% seo %}
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+    type="text/css" crossorigin>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#157878">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    /* --- A. 提升文字阅读体验的行高与段间距 --- */
+    p,
+    li {
+      line-height: 1.8;
+      /* 增加正文行高，缓解长时间阅读的技术长文的视觉疲劳 */
+      margin-bottom: 1.5em;
+      /* 增加段落之间的空白，保持整体排版的呼吸感 */
+      letter-spacing: 0.5px;
+      /* 稍微拉开字间距，提升中文字符的辨识度 */
+    }
+
+    h2,
+    h3,
+    h4 {
+      margin-top: 2.2em;
+      /* 增加标题上方的留白，强化层级分隔感 */
+      margin-bottom: 1em;
+      /* 标题与下方正文的距离 */
+    }
+
+    /* --- B. Mac 终端风格代码块美化 (针对 Jekyll 默认的 Rouge 渲染器) --- */
+
+    /* B-1: 改造代码块的主容器 (背景、边框、阴影) */
+    div.highlighter-rouge pre.highlight {
+      background-color: #21252b !important;
+      /* 设定为经典的暗黑极客深色背景 */
+      color: #abb2bf !important;
+      /* 设定默认的纯文本/标点符号颜色为浅灰 */
+      border-radius: 8px;
+      /* 容器四角设置为 8px 的平滑圆角 */
+      padding: 35px 20px 20px 20px;
+      /* 重点：顶部强制留出 35px 的空间，用于放置红黄绿按钮 */
+      position: relative;
+      /* 设为相对定位，作为伪元素绝对定位的参考锚点 */
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      /* 增加底部立体阴影，使代码块悬浮于页面之上 */
+      border: none;
+      /* 移除 Cayman 可能存在的默认灰色边框 */
+    }
+
+    /* B-2: 绘制 Mac 风格的“红、黄、绿”窗口控制按钮 */
+    div.highlighter-rouge pre.highlight::before {
+      content: " ";
+      /* 激活伪元素 */
+      position: absolute;
+      /* 绝对定位，相对于上面的主容器进行漂浮摆放 */
+      border-radius: 50%;
+      /* 100% 圆角，画出完美的圆形 */
+      width: 12px;
+      /* 按钮直径 */
+      height: 12px;
+      left: 20px;
+      /* 距离容器左边缘 20px */
+      top: 15px;
+      /* 距离容器顶部 15px (刚好放在 padding 留出的 35px 空间内) */
+
+      /* 使用背景色画出第一个红点，并利用 box-shadow 的位移特性连续画出黄点和绿点 */
+      background: #fc625d;
+      /* 红点 (关闭按钮) */
+      box-shadow:
+        20px 0 #fdbc40,
+        /* 向右平移 20px 画出黄点 (最小化按钮) */
+        40px 0 #35cd4b;
+      /* 向右平移 40px 画出绿点 (全屏按钮) */
+    }
+
+    /* B-3: 调整代码内部文本的字体与行间距 */
+    div.highlighter-rouge pre.highlight code {
+      font-family: 'Fira Code', 'Consolas', monospace;
+      /* 优先使用适合编程的等宽字体 */
+      line-height: 1.6;
+      /* 适度放开代码的行高，避免字符上下粘连 */
+      letter-spacing: 0.3px;
+      /* 代码字母间距微调 */
+    }
+
+    /* ========================================== */
+    /* 新增：将 TOC 目录改造成右侧悬浮导航栏 */
+    /* ========================================== */
+    #markdown-toc {
+      position: fixed;
+      /* 固定定位，跟随页面滚动 */
+      top: 120px;
+      /* 距离顶部的距离 */
+      right: 5%;
+      /* 靠在屏幕右侧 */
+      width: 200px;
+      /* 目录的宽度 */
+      max-height: calc(100vh - 160px);
+      /* 防止目录太长，限制最大高度 */
+      overflow-y: auto;
+      /* 目录太长时允许内部滚动 */
+      background-color: #f8f9fa;
+      /* 浅灰色背景，融入 Cayman 主题 */
+      border: 1px solid #e1e4e8;
+      border-radius: 6px;
+      padding: 20px 15px 20px 30px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      /* 增加淡淡的悬浮阴影 */
+      z-index: 99;
+      /* 确保不被其他内容遮挡 */
+      font-size: 0.9em;
+    }
+
+    /* 给目录加一个漂亮的表头 */
+    #markdown-toc::before {
+      content: "📑 本文目录";
+      font-weight: bold;
+      display: block;
+      margin-left: -15px;
+      margin-bottom: 15px;
+      color: #157878;
+      /* 使用 Cayman 标志性的深青色 */
+      border-bottom: 1px solid #e1e4e8;
+      padding-bottom: 10px;
+    }
+
+    /* 美化目录内的链接 */
+    #markdown-toc li {
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+
+    #markdown-toc a {
+      color: #555;
+      text-decoration: none;
+    }
+
+    #markdown-toc a:hover {
+      color: #157878;
+      text-decoration: underline;
+    }
+
+    /* 响应式适配：如果屏幕太小（比如手机或小笔记本），取消悬浮，回到正文顶部 */
+    @media screen and (max-width: 1300px) {
+      #markdown-toc {
+        position: static;
+        width: 100%;
+        max-height: none;
+        box-shadow: none;
+        margin-bottom: 30px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a id="skip-to-content" href="#content">Skip to the content.</a>
+
+  <header class="page-header" role="banner">
+    <h1 class="project-name">{{ page.title | default: site.title | default: site.github.repository_name }}</h1>
+    <h2 class="project-tagline">{{ page.description | default: site.description | default: site.github.project_tagline
+      }}</h2>
+
+    {% if site.github.is_project_page %}
+    <a href="{{ site.github.repository_url }}" class="btn">View on GitHub</a>
+    {% endif %}
+    {% if site.show_downloads %}
+    <a href="{{ site.github.zip_url }}" class="btn">Download .zip</a>
+    <a href="{{ site.github.tar_url }}" class="btn">Download .tar.gz</a>
+    {% endif %}
+  </header>
+
+  <main id="content" class="main-content" role="main">
+    {{ content }}
+
+    <footer class="site-footer">
+      {% if site.github.is_project_page %}
+      <span class="site-footer-owner"><a href="{{ site.github.repository_url }}">{{ site.github.repository_name }}</a>
+        is maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a>.</span>
+      {% endif %}
+      <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub
+          Pages</a>.</span>
+    </footer>
+  </main>
+</body>
+
+</html>
